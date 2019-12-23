@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { DataLocalService } from '../../app/services/data-local.service';
 
 @Component({
   selector: 'app-tab1',
@@ -8,12 +9,15 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 })
 export class Tab1Page {
 
-  constructor(private barcodeScanner: BarcodeScanner) {}
-
   sliderOpts = {
     allowSlidePrev: false,
     allowSlideNext: false
-  }
+  };
+
+  constructor(
+    private barcodeScanner: BarcodeScanner,
+    private dataLocalService: DataLocalService
+  ) {}
 
   ionViewWillEnter() {
     this.scan();
@@ -26,8 +30,12 @@ export class Tab1Page {
   scan() {
     this.barcodeScanner.scan().then(barcodeData => {
     console.log('Barcode data', barcodeData);
+    if (!barcodeData.cancelled) {
+      this.dataLocalService.guardarRegistro(barcodeData.format, barcodeData.text);
+    }
     }).catch(err => {
         console.log('Error', err);
+        this.dataLocalService.guardarRegistro('QRCode', 'https://ibm.com');
     });
   }
 
