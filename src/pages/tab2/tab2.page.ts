@@ -16,6 +16,7 @@ export class Tab2Page {
 
   abrirRegistro(registro) {
     console.log('Registro abrir', registro);
+    this.dataLocalService.abrirRegistro(registro);
   }
 
 }
