@@ -21,7 +21,6 @@ export class DataLocalService {
 
   async cargarRegistros() {
     let registros = await this.storage.get('registros');
-    if (!registros) { registros = []; }
-    this.guardados = registros;
+    this.guardados = registros || [];
   }
 }
