@@ -28,7 +28,7 @@ export class MapaPage implements OnInit, AfterViewInit {
     mapboxgl.accessToken = 'pk.eyJ1IjoicmFmYS1hcmlhZG5hIiwiYSI6ImNrNGpwbTg1MjFpZWoza3F3OGYwYnNodzgifQ.JxKVxypzfEMisNLiQrh6WA';
     let map = new mapboxgl.Map({
       style: 'mapbox://styles/mapbox/light-v10',
-      center: [-74.0066, 40.7135],
+      center: [this.lng, this.lat],
       zoom: 15.5,
       pitch: 45,
       bearing: -17.6,
@@ -38,7 +38,9 @@ export class MapaPage implements OnInit, AfterViewInit {
 
   // The 'building' layer in the mapbox-streets vector source contains building-height
   // data from OpenStreetMap.
-    map.on('load', function() {
+    map.on('load', () => {
+      map.resize();
+
       // Insert the layer beneath any symbol layer.
       let layers = map.getStyle().layers;
 
