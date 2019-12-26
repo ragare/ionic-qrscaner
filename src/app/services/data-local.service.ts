@@ -6,7 +6,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 import { File} from '@ionic-native/file/ngx';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
-import { arch } from 'os';
 
 @Injectable({
   providedIn: 'root'
