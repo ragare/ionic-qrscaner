@@ -41,6 +41,11 @@ export class MapaPage implements OnInit, AfterViewInit {
     map.on('load', () => {
       map.resize();
 
+      // Marker
+      const marker = new mapboxgl.Marker()
+        .setLngLat([this.lng, this.lat])
+        .addTo(map);
+
       // Insert the layer beneath any symbol layer.
       let layers = map.getStyle().layers;
 
@@ -88,6 +93,7 @@ export class MapaPage implements OnInit, AfterViewInit {
           },
           labelLayerId
       );
+;
   });
 
   }

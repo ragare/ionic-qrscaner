@@ -35,7 +35,8 @@ export class Tab1Page {
     }).catch(err => {
         console.log('Error', err);
         // this.dataLocalService.guardarRegistro('QRCode', 'https://ibm.com');
-        this.dataLocalService.guardarRegistro('QRCode', 'geo:40.73151796986687,-74.06087294062502');
+        // this.dataLocalService.guardarRegistro('QRCode', 'geo:40.73151796986687,-74.06087294062502');
+        this.dataLocalService.guardarRegistro('QRCode', 'geo:39.466808,-0.376100');
     });
   }
 
